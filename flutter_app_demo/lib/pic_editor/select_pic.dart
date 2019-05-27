@@ -70,6 +70,7 @@ class Page extends State<MainPage> {
             snapshot.data != null) {
           return Image.file(
             snapshot.data,
+            scale: BoxFit.cover,
             width: 300,
             height: 300,
           );
