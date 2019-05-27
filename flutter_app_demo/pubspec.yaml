@@ -24,6 +24,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   image_picker: ^0.4.10
+  residemenu: ^1.2.5
+  share: ^0.5.2
+  url_launcher: ^5.0.2
+  fluttie: ^0.2.3
+  carousel_pro: ^0.0.13
 
 dev_dependencies:
   flutter_test:
@@ -41,14 +46,28 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/author.png
+    - assets/images/background.jpg
+    - assets/images/icon.jpg
+    - assets/images/card1.png
+    - assets/images/card2.png
+    - assets/images/card3.png
+    - assets/images/card4.png
+    - assets/local.json
+    - assets/confetti.json
+
+
   fonts:
     - family: Acme
       fonts:
-        - asset: font/Acme-Regular.ttf
-
+        - asset:  assets/font/Acme-Regular.ttf
+          weight: 600
     - family: Josefin Sans
       fonts:
-        - asset: font/JosefinSans-Regular.ttf
+        - asset: assets/font/JosefinSans-Regular.ttf
+          weight: 200
 
 
 
