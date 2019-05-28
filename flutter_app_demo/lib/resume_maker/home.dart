@@ -9,9 +9,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher.dart' as urlLauncher;
 import 'package:flutter/gestures.dart';
 
-// import 'package:firebase_admob/firebase_admob.dart';
-// import 'appid.dart';
-// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
 class Home extends StatefulWidget {
@@ -190,7 +187,8 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
           /*   image: new DecorationImage(
               image: new AssetImage("assets/images/background.jpg"),
               fit: BoxFit.cover),*/
-          color: Colors.white.withOpacity(0.11)),
+
+          color: Color(0xFFD0C490)),
       controller: _menuController,
       leftScaffold: new MenuScaffold(
         header: new ConstrainedBox(
@@ -201,6 +199,20 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
           ),
         ),
         children: <Widget>[
+          new Material(
+            color: Colors.transparent,
+            child: new InkWell(
+              child: ResideMenuItem(
+                title: 'HOME',
+                titleStyle: TextStyle(
+                    color: Colors.black, fontFamily: 'Acme', fontSize: 12),
+                icon:
+                    const Icon(Icons.fiber_manual_record, color: Colors.black),
+              ),
+              onTap: () => PersonalInfo(),
+            ),
+          ),
+
           ///I have to make these drawer list widgets manually cause it is containing different methods.
           new Material(
             color: Colors.transparent,
@@ -245,49 +257,53 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
         ],
       ),
       child: new Scaffold(
-        appBar: new AppBar(
-          elevation: 10.0,
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          leading: new GestureDetector(
-            child: const Icon(
-              Icons.menu,
-              color: Colors.black,
+          appBar: new AppBar(
+            elevation: 10.0,
+            centerTitle: true,
+            backgroundColor: Colors.white,
+            leading: new GestureDetector(
+              child: const Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
+              onTap: () {
+                _menuController.openMenu(true);
+              },
             ),
-            onTap: () {
-              _menuController.openMenu(true);
-            },
-          ),
-          title: new Text(
-            'RESUME MAKER',
-            style: TextStyle(color: Colors.black, fontFamily: 'Acme'),
-          ),
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(
-                  Icons.person_outline,
-                  color: Colors.black,
-                  size: 20.0,
-                ),
-                onPressed: () => showAbout(context))
-          ],
-        ),
-        body: ListView(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(bottom: 5.0),
-              height: height / 2.5,
-              child: myCraousal,
+            title: new Text(
+              'RESUME MAKER',
+              style: TextStyle(color: Colors.black, fontFamily: 'Acme'),
             ),
-            getListItems(Color(0xFFF1B136), Icons.person, 'Behavioural Based'),
-            getListItems(Color(0xFF885F7F), Icons.wc, 'Communications Based'),
-            getListItems(Color(0xFF13B0A5), Icons.call_split, 'Opinion Based'),
-            getListItems(
-                Color(0xFFD0C490), Icons.assessment, 'Performance Based'),
-            getListItems(Color(0xFFEF6363), Icons.help_outline, 'Brainteasers'),
-          ],
-        ),
-      ),
+            actions: <Widget>[
+              IconButton(
+                  icon: Icon(
+                    Icons.person_outline,
+                    color: Colors.black,
+                    size: 20.0,
+                  ),
+                  onPressed: () => showAbout(context))
+            ],
+          ),
+          body: ListView(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(bottom: 5.0),
+                height: height / 2.5,
+                child: myCraousal,
+              ),
+              getListItems(
+                  Color(0xFFF1B136), Icons.person, 'Behavioural Based'),
+              getListItems(Color(0xFF885F7F), Icons.wc, 'Communications Based'),
+              getListItems(
+                  Color(0xFF13B0A5), Icons.call_split, 'Opinion Based'),
+              getListItems(
+                  Color(0xFFD0C490), Icons.assessment, 'Performance Based'),
+              getListItems(
+                  Color(0xFFEF6363), Icons.help_outline, 'Brainteasers'),
+            ],
+          )),
     );
   }
+
+  homeTab() {}
 }
